@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Almost done · باقي خطوة — TikTok Alerts</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .copybox { width: 100%; font: .85rem/1.5 ui-monospace, Consolas, monospace; padding: 10px; border: 1px solid var(--line);
+             border-radius: 8px; background: var(--bg); color: var(--fg); direction: ltr; text-align: left; resize: vertical; }
+  button { margin-top: 10px; font: inherit; padding: 8px 18px; border-radius: 999px; border: 1px solid var(--pink);
+           background: transparent; color: var(--fg); cursor: pointer; }
+  button:hover { background: var(--pink); color: #fff; }
+  #done { display: none; margin-inline-start: 10px; color: var(--cyan); }
+</style>
+</head>
+<body>
+<header class="top"><div class="bar">
+  <span class="brand">TikTok <b>Alerts</b></span>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="terms-of-service.html">Terms · الشروط</a>
+    <a href="privacy-policy.html">Privacy · الخصوصية</a>
+  </nav>
+</div></header>
+
+<main>
+<section class="lang" lang="ar" dir="rtl">
+  <h1>باقي خطوة وحدة ✅</h1>
+  <p>وافقت على الربط في تيك توك. الحين انسخ الرابط الموجود تحت وأرسله للبوت في ديسكورد بالأمر:</p>
+  <p><code>/tiktok connect_code</code></p>
+  <p class="note">الرابط فيه كود مؤقت وسري. لا تنشره في مكان عام، وأرسله للبوت فقط خلال دقائق.</p>
+</section>
+
+<section class="lang" lang="en" dir="ltr">
+  <h1>One last step ✅</h1>
+  <p>You approved the link on TikTok. Now copy the address below and send it to the bot in Discord with the command:</p>
+  <p><code>/tiktok connect_code</code></p>
+  <p class="note">The address contains a short-lived secret code. Don't post it publicly; send it to the bot within a few minutes.</p>
+</section>
+
+<section class="lang" lang="en" dir="ltr">
+  <textarea class="copybox" id="url" rows="4" readonly aria-label="Address to copy"></textarea>
+  <button type="button" id="copy">Copy · نسخ</button><span id="done">✔</span>
+  <noscript><p>JavaScript is off: copy the whole address from your browser's address bar. · انسخ الرابط كامل من شريط العنوان.</p></noscript>
+</section>
+</main>
+<footer>This page only displays its own address; nothing is sent anywhere. · هذي الصفحة تعرض عنوانها فقط ولا ترسل أي شي لأي جهة.</footer>
+<script>
+  var box = document.getElementById("url");
+  box.value = location.href;
+  document.getElementById("copy").addEventListener("click", function () {
+    box.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) {}
+    if (!ok && navigator.clipboard) { navigator.clipboard.writeText(box.value); ok = true; }
+    document.getElementById("done").style.display = ok ? "inline" : "none";
+  });
+</script>
+</body>
+</html>
